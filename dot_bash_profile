@@ -1,0 +1,8 @@
+#
+# ~/.bash_profile
+#
+
+[[ -f "${HOME}/.bashrc" ]] && . "${HOME}/.bashrc"
+
+# Created by `userpath` on 2020-04-19 13:30:44
+export PATH="$PATH:/home/jmgpena/.local/bin"
