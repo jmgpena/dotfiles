@@ -1,0 +1,5 @@
+[user]
+	name = jmgpena
+	email = jmgpena@gmail.com
+[includeIf "gitdir:~/p5/"]
+	path = ~/.gitconfig-p5
