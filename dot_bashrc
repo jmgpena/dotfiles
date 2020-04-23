@@ -55,11 +55,19 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 # disable flow control
 stty -ixon
 
+# Python setup
 # pyenv setup
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
     export PYENV_ROOT="$HOME/.pyenv"
+fi
+# virtualenvwrapper
+if [ -d "$HOME/.local/pipx/venvs/virtualenvwrapper/bin/" ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    export PROJECT_HOME=$HOME/p5
+    export VIRTUALENVWRAPPER_PYTHON=$HOME/.local/pipx/venvs/virtualenvwrapper/bin/python
+    source "$HOME/.local/pipx/venvs/virtualenvwrapper/bin/virtualenvwrapper.sh"
 fi
 
 # PHP Composer setup
@@ -137,6 +145,9 @@ prompt_off() {
     PS1='\$'
 }
 prompt_on
+
+# direnv
+eval "$(direnv hook bash)"
 
 # Aliases
 # Easier navigation: .., ...
