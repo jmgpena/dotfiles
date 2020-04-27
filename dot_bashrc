@@ -6,6 +6,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# load vte.sh on tilix or vte terminals
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
 # Base environment variables
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
