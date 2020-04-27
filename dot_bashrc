@@ -65,7 +65,7 @@ stty -ixon
 # pyenv setup
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
+    # eval "$(pyenv virtualenv-init -)"
     export PYENV_ROOT="$HOME/.pyenv"
 fi
 # virtualenvwrapper
@@ -155,9 +155,11 @@ prompt_on
 # direnv
 eval "$(direnv hook bash)"
 show_virtual_env() {
-  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
-    echo "($(basename $VIRTUAL_ENV))"
-  fi
+    GREEN='\e[32m'
+    RESET='\e[0m'
+    if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+        echo -e "$GREEN($(basename $VIRTUAL_ENV))$RESET"
+    fi
 }
 export -f show_virtual_env
 PS1='$(show_virtual_env)'$PS1
