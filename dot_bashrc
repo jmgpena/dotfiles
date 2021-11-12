@@ -150,7 +150,7 @@ prompt_on() {
 prompt_off() {
     PS1='\$'
 }
-prompt_on
+#prompt_on
 
 # direnv
 eval "$(direnv hook bash)"
@@ -216,3 +216,6 @@ alias dce="docker-compose exec"
 # docker cleanup stuff
 alias drmc='docker rm $(docker ps --all -q -f status=exited)'
 alias drmid='docker rmi $(docker images -q -f dangling=true)'
+
+# starship prompt
+eval "$(starship init bash)"
