@@ -48,7 +48,6 @@ PROMPT_DIRTRIM=2 # Automatically trim long paths in the prompt (requires Bash 4.
 shopt -s cdable_vars
 # locations
 export dotf="$HOME/.dotfiles"
-export p5="$HOME/p5"
 export dropbox="$HOME/Dropbox"
 export sync="$HOME/Sync"
 
@@ -78,11 +77,13 @@ fi
 
 # PHP Composer setup
 if [ -d "${HOME}/.config/composer/vendor/bin" ]; then
-    export PATH=${PATH}:~/.config/composer/vendor/bin
+  export PATH=${PATH}:~/.config/composer/vendor/bin
 fi
 
 # add user cargo/bin to path
-PATH="$PATH:$HOME/.cargo/bin"
+if [ -d "${HOME}/.cargo/bin" ]; then
+  PATH="$PATH:$HOME/.cargo/bin"
+fi
 
 # Activate nvm
 # This works in archlinux if you install nvm from AUR
@@ -90,67 +91,16 @@ if [ -e /usr/share/nvm/init-nvm.sh ]; then
     source /usr/share/nvm/init-nvm.sh
 fi
 # local bin path
-export PATH="$PATH:${HOME}/.local/bin"
-export PATH="${PATH}:${HOME}/.emacs.d/bin"
+if [ -d "${HOME}/.local/bin" ]; then
+  export PATH="$PATH:${HOME}/.local/bin"
+fi
+if [ -d "${HOME}/.emacs.d/bin" ]; then
+  export PATH="${PATH}:${HOME}/.emacs.d/bin"
+fi
 
-# NPM
-NPM_PACKAGES="${HOME}/.npm-packages"
-export PATH="$PATH:$NPM_PACKAGES/bin"
 # Preserve MANPATH if you already defined it somewhere in your config.
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
-
-##############################################################################
-# Prompt
-##############################################################################
-# TODO
-# use gitstatus.sh and check the code here: https://github.com/magicmonty/bash-git-prompt/blob/master/gitprompt.sh
-# Setup the shell prompt
-shopt -s promptvars # enable promptvars
-# get git repository information
-# TODO maybe just check if .git exists before calling git?
-# TODO add validation/warning in case git not installed or available
-prompt_git() {
-    git branch &>/dev/null || return 1
-    HEAD="$(git symbolic-ref HEAD 2>/dev/null)"
-    BRANCH="${HEAD##*/}"
-    [[ -n "$(git status 2>/dev/null | \
-        grep -F 'working directory clean')" ]] || STATUS="!"
-    printf '[ %s ]' "${BRANCH:-unknown}${STATUS}"
-}
-prompt_hg() {
-    hg branch &>/dev/null || return 1
-    BRANCH="$(hg branch 2>/dev/null)"
-    [[ -n "$(hg status 2>/dev/null)" ]] && STATUS="!"
-    printf '(hg:%s)' "${BRANCH:-unknown}${STATUS}"
-}
-prompt_svn() {
-    svn info &>/dev/null || return 1
-    URL="$(svn info 2>/dev/null | \
-        awk -F': ' '$1 == "URL" {print $2}')"
-    ROOT="$(svn info 2>/dev/null | \
-        awk -F': ' '$1 == "Repository Root" {print $2}')"
-    BRANCH=${URL/$ROOT}
-    BRANCH=${BRANCH#/}
-    BRANCH=${BRANCH#branches/}
-    BRANCH=${BRANCH%%/*}
-    [[ -n "$(svn status 2>/dev/null)" ]] && STATUS="!"
-    printf '(svn:%s)' "${BRANCH:-unknown}${STATUS}"
-}
-prompt_vcs() {
-    prompt_git #|| prompt_svn || prompt_hg
-}
-prompt_jobs() {
-    [[ -n "$(jobs)" ]] && printf '{%d}' $(jobs | sed -n '$=')
-}
-
-prompt_on() {
-    PS1='[\[\e[34m\]\h\[\e[0m\]]$(prompt_jobs):\w $(prompt_vcs)\n\$ '
-}
-prompt_off() {
-    PS1='\$'
-}
-#prompt_on
 
 # direnv
 eval "$(direnv hook bash)"
@@ -190,9 +140,6 @@ alias l="ls -lh ${colorflag}"
 alias la="ls -la ${colorflag}"
 # List only directories
 alias lsd='ls -l | grep "^d"'
-# `cat` with beautiful colors. requires Pygments installed.
-# $ pipx install Pygments
-alias c='pygmentize -O style=monokai -f console256 -g'
 # grep
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -216,6 +163,9 @@ alias dce="docker-compose exec"
 # docker cleanup stuff
 alias drmc='docker rm $(docker ps --all -q -f status=exited)'
 alias drmid='docker rmi $(docker images -q -f dangling=true)'
+
+export EDITOR="nvim"
+export VISUAL= "nvim"
 
 # starship prompt
 eval "$(starship init bash)"
