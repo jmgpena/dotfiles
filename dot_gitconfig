@@ -1,5 +1,7 @@
 [user]
 	name = jmgpena
 	email = jmgpena@gmail.com
-[includeIf "gitdir:~/p5/"]
-	path = ~/.gitconfig-p5
+[includeIf "gitdir:~/dev/goeve"]
+	path = ~/.gitconfig-goeve
+[includeIf "gitdir:~/dev/teamsportz"]
+	path = ~/.gitconfig-teamsportz
