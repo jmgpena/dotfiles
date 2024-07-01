@@ -11,6 +11,7 @@ README.md
 .inputrc
 .config/nvim
 .config/doom
+.config/yazi
 {{- end }}
 
 # Stuff just for Windows
