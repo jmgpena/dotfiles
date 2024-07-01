@@ -3,3 +3,17 @@ README.md
 .tmux.conf
 
 .config/kitty
+
+# Stuff to ignore on windows
+{{- if eq .chezmoi.os "windows" }}
+.bashrc
+.bash_profile
+.inputrc
+.config/nvim
+.config/doom
+{{- end }}
+
+# Stuff just for Windows
+{{- if ne .chezmoi.os "windows" }}
+AppData
+{{- end }}
