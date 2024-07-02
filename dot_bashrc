@@ -127,7 +127,7 @@ alias e='exit'
 alias md='mkdir -p'
 
 # ls
-if command -v eza; then
+if command -v eza > /dev/null 2>&1; then
   # alias eza to ls
   alias ls='eza --color=always --group-directories-first --icons'
   alias ll='eza -la --icons --octal-permissions --group-directories-first'
@@ -181,6 +181,7 @@ alias dce="docker-compose exec"
 alias drmc='docker rm $(docker ps --all -q -f status=exited)'
 alias drmid='docker rmi $(docker images -q -f dangling=true)'
 alias bat='batcat'
+alias cm='chezmoi'
 
 export EDITOR="nvim"
 export VISUAL= "nvim"
