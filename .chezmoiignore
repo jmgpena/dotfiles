@@ -21,10 +21,10 @@ AppData
 
 # penabox (desktop Windows)
 {{- if eq .chezmoi.hostname "penabox" }}
-Documents/WindowsPowerShell
+Documents
 {{- end }}
 
 # pena-laptop (laptop Windows)
 {{- if eq .chezmoi.hostname "pena-laptop" }}
-OneDrive/Documents/WindowsPowerShell
+OneDrive/Documents
 {{- end }}
