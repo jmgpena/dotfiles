@@ -4,6 +4,7 @@ command_timeout = 1000
 
 [username]
 show_always = true
+format = '[$user]($style)@'
 
 [shell]
 disabled = false
@@ -14,4 +15,6 @@ style = 'white bold'
 
 [hostname]
 ssh_only = false
+ssh_symbol = ' 🌐'
+format = '[$hostname$ssh_symbol]($style) in '
 
