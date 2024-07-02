@@ -1,0 +1,17 @@
+# global configs
+scan_timeout = 100
+command_timeout = 1000
+
+[username]
+show_always = true
+
+[shell]
+disabled = false
+powershell_indicator = '󰨊'
+bash_indicator = ''
+cmd_indicator = ''
+style = 'white bold'
+
+[hostname]
+ssh_only = false
+
