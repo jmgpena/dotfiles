@@ -18,3 +18,13 @@ README.md
 {{- if ne .chezmoi.os "windows" }}
 AppData
 {{- end }}
+
+# penabox (desktop Windows)
+{{- if eq .chezmoi.hostname "penabox" }}
+Documents/WindowsPowerShell
+{{- end }}
+
+# pena-laptop (laptop Windows)
+{{- if eq .chezmoi.hostname "pena-laptop" }}
+OneDrive/Documents/WindowsPowerShell
+{{- end }}
