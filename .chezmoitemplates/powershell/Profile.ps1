@@ -9,5 +9,8 @@ function yy {
     Remove-Item -Path $tmp
 }
 
+# PSReadline
+Set-PSReadlineOption -EditMode Emacs
+
 # prompt
 Invoke-Expression (&starship init powershell)
