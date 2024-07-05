@@ -17,6 +17,7 @@ README.md
 # Stuff just for Windows
 {{- if ne .chezmoi.os "windows" }}
 AppData
+.wslconfig
 {{- end }}
 
 # penabox (desktop Windows)
