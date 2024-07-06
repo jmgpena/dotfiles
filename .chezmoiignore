@@ -18,6 +18,8 @@ README.md
 {{- if ne .chezmoi.os "windows" }}
 AppData
 .wslconfig
+Documents
+OneDrive/Documents
 {{- end }}
 
 # penabox (desktop Windows)
