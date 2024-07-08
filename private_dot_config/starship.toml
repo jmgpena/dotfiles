@@ -21,3 +21,6 @@ format = '[$hostname$ssh_symbol]($style) in '
 [shlvl]
 disabled = false
 threshold = 1
+
+[os]
+disabled = false
