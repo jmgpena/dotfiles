@@ -85,6 +85,7 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 
 -- Personal keymaps
 vim.keymap.set("n", "<leader>fs", vim.cmd.update, { desc = "Save file" })
+vim.keymap.set("n", "<leader>qq", ":q<CR>", { desc = "[q]uit neovim" })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -181,6 +182,7 @@ require("lazy").setup({
 				["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
 				["<leader>t"] = { name = "[T]oggle", _ = "which_key_ignore" },
 				["<leader>h"] = { name = "Git [H]unk", _ = "which_key_ignore" },
+				["<leader>q"] = { name = "[q]uit/session", _ = "which_key_ignore" },
 			})
 			-- visual mode
 			require("which-key").register({
