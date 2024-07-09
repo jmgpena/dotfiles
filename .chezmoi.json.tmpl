@@ -1,0 +1,10 @@
+{
+  "edit": {
+   "command": "nvim"
+  },
+  "cd": {
+    {{- if eq .chezmoi.os "windows" }}
+    "command": "powershell"
+    {{- end}}
+  }
+}
