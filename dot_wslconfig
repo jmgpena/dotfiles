@@ -1,6 +1,7 @@
 [wsl2]
 #localhostForwarding=true
 networkingMode=mirrored
+dnsTunneling=true
 # Enable experimental features
 [experimental]
 sparseVhd=true
