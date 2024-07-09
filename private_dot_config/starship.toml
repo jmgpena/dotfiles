@@ -24,3 +24,8 @@ threshold = 1
 
 [os]
 disabled = false
+
+[os.symbols]
+Arch = "󰣇 "
+Ubuntu = "󰕈 "
+Windows = "󰖳 "
