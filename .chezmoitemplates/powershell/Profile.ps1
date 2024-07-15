@@ -1,7 +1,7 @@
 # yazi file manager
 function yy {
     $tmp = [System.IO.Path]::GetTempFileName()
-    yazi $args --cwd-file -Value "$tmp"
+    yazi $args --cwd-file="$tmp"
     $cwd = Get-Content -Path $tmp
     if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
         Set-Location -LiteralPath $cwd
