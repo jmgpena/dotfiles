@@ -98,6 +98,9 @@ fi
 if [ -d "${HOME}/.emacs.d/bin" ]; then
   export PATH="${PATH}:${HOME}/.emacs.d/bin"
 fi
+if [ -d "${HOME}/.config/emacs/bin" ]; then
+  export PATH="${PATH}:${HOME}/.config/emacs/bin"
+fi
 
 # Preserve MANPATH if you already defined it somewhere in your config.
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
