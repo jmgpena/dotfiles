@@ -2,7 +2,11 @@ local wezterm = require 'wezterm'
 local config = {}
 
 config.color_scheme = "Tokyo Night"
-config.default_prog = {"powershell"}
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  config.default_prog = {"powershell"}
+else
+  config.default_prog = {"bash"}
+end
 config.font = wezterm.font("Cascadia Mono NF")
 config.font_size = 11.0
 config.keys = {
