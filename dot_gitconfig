@@ -1,6 +1,6 @@
 [user]
 	name = jmgpena
-	email = jmgpena@gmail.com
+	email = jorge@jmgpena.net
 [includeIf "gitdir:~/dev/goeve"]
 	path = ~/.gitconfig-goeve
 [includeIf "gitdir:~/dev/teamsportz"]

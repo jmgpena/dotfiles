@@ -1,17 +1,15 @@
 README.md
-
 .tmux.conf
-
 .config/kitty
 
 # Stuff to ignore on windows
 {{- if eq .chezmoi.os "windows" }}
-.bashrc
-.bash_profile
-.inputrc
+#.bashrc
+#.bash_profile
+#.inputrc
 .config/nvim
 .config/doom
-.config/yazi
+#.config/yazi
 {{- end }}
 
 # Stuff just for Windows
@@ -25,9 +23,4 @@ OneDrive/Documents
 # penabox (desktop Windows)
 {{- if eq .chezmoi.hostname "penabox" }}
 Documents
-{{- end }}
-
-# pena-laptop (laptop Windows)
-{{- if eq .chezmoi.hostname "pena-laptop" }}
-OneDrive/Documents
 {{- end }}

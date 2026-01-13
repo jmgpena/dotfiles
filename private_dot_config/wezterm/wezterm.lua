@@ -9,13 +9,13 @@ config.automatically_reload_config = true
 
 -- appearence
 config.color_scheme = "Tokyo Night"
-config.font = wezterm.font("Cascadia Mono NF")
-config.font_size = 11.0
+config.font = wezterm.font("CaskaydiaCove NF")
+config.font_size = 12.0
 config.window_decorations = "RESIZE"
 
 -- start shell for different systems
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
-	config.default_prog = { "powershell" }
+	config.default_prog = { "bash" }
 else
 	config.default_prog = { "bash" }
 end

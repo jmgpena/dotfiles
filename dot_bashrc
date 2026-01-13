@@ -102,10 +102,6 @@ if [ -d "${HOME}/.config/emacs/bin" ]; then
   export PATH="${PATH}:${HOME}/.config/emacs/bin"
 fi
 
-# Preserve MANPATH if you already defined it somewhere in your config.
-# Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
-export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
-
 # direnv
 eval "$(direnv hook bash)"
 show_virtual_env() {
@@ -195,6 +191,8 @@ alias drmc='docker rm $(docker ps --all -q -f status=exited)'
 alias drmid='docker rmi $(docker images -q -f dangling=true)'
 alias bat='batcat'
 alias cm='chezmoi'
+alias vi='nvim'
+alias vim='nvim'
 
 export EDITOR="nvim"
 export VISUAL= "nvim"
