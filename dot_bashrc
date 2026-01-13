@@ -189,7 +189,6 @@ alias dce="docker-compose exec"
 # docker cleanup stuff
 alias drmc='docker rm $(docker ps --all -q -f status=exited)'
 alias drmid='docker rmi $(docker images -q -f dangling=true)'
-alias bat='batcat'
 alias cm='chezmoi'
 alias vi='nvim'
 alias vim='nvim'
