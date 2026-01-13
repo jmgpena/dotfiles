@@ -7,7 +7,7 @@ README.md
 #.bashrc
 #.bash_profile
 #.inputrc
-.config/nvim
+#.config/nvim
 .config/doom
 #.config/yazi
 {{- end }}
