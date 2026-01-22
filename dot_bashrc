@@ -6,14 +6,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# load vte.sh on tilix or vte terminals
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-fi
-
 # Base environment variables
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
 # common setup
 set -o noclobber # Prevent file overwrite on stdout redirection
 # Use `>|` to force redirection to an existing file
@@ -58,22 +54,7 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # disable flow control
-stty -ixon
-
-# Python setup
-# pyenv setup
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-    # eval "$(pyenv virtualenv-init -)"
-    export PYENV_ROOT="$HOME/.pyenv"
-fi
-# virtualenvwrapper
-if [ -d "$HOME/.local/pipx/venvs/virtualenvwrapper/bin/" ]; then
-    export WORKON_HOME=$HOME/.virtualenvs
-    export PROJECT_HOME=$HOME/p5
-    export VIRTUALENVWRAPPER_PYTHON=$HOME/.local/pipx/venvs/virtualenvwrapper/bin/python
-    source "$HOME/.local/pipx/venvs/virtualenvwrapper/bin/virtualenvwrapper.sh"
-fi
+# stty -ixon
 
 # PHP Composer setup
 if [ -d "${HOME}/.config/composer/vendor/bin" ]; then
@@ -85,12 +66,6 @@ if [ -d "${HOME}/.cargo/bin" ]; then
   PATH="$PATH:$HOME/.cargo/bin"
 fi
 
-# Activate nvm
-if [ -d "${HOME}/.nvm" ]; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-fi
 # local bin path
 if [ -d "${HOME}/.local/bin" ]; then
   export PATH="$PATH:${HOME}/.local/bin"
@@ -104,15 +79,6 @@ fi
 
 # direnv
 eval "$(direnv hook bash)"
-show_virtual_env() {
-    GREEN='\e[32m'
-    RESET='\e[0m'
-    if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
-        echo -e "$GREEN($(basename $VIRTUAL_ENV))$RESET"
-    fi
-}
-export -f show_virtual_env
-PS1='$(show_virtual_env)'$PS1
 
 # Yazi
 function yy() {
@@ -141,7 +107,7 @@ if command -v eza > /dev/null 2>&1; then
   alias ls='eza --color=always --group-directories-first --icons'
   alias ll='eza -la --icons --octal-permissions --group-directories-first'
   alias l='eza -bGF --header --git --color=always --group-directories-first --icons'
-  alias llm='eza -lbGd --header --git --sort=modified --color=always --group-directories-first --icons' 
+  alias llm='eza -lbGd --header --git --sort=modified --color=always --group-directories-first --icons'
   alias la='eza --long --all --group --group-directories-first'
   alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale --color=always --group-directories-first --icons'
 
@@ -198,3 +164,8 @@ export VISUAL= "nvim"
 
 # starship prompt
 eval "$(starship init bash)"
+
+# run fastfetch
+if command -v fastfetch > /dev/null 2>&1; then
+  fastfetch
+fi

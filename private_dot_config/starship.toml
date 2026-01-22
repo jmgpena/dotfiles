@@ -1,10 +1,11 @@
 # global configs
+format = '$os$shell$all$line_break$character'
 scan_timeout = 100
 command_timeout = 1000
 
 [username]
 show_always = true
-format = '[$user]($style)@'
+format = '[$user]($style) '
 
 [shell]
 disabled = false
@@ -14,13 +15,16 @@ cmd_indicator = ''
 style = 'white bold'
 
 [hostname]
-ssh_only = false
+ssh_only = true
 ssh_symbol = ' 🌐'
-format = '[$hostname$ssh_symbol]($style) in '
+format = '@[$hostname$ssh_symbol]($style) '
+
+[directory]
+format = 'in [$path]($style)[$read_only]($read_only_style) '
 
 [shlvl]
 disabled = false
-threshold = 1
+threshold = 2
 
 [os]
 disabled = false
