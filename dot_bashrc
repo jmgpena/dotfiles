@@ -158,6 +158,7 @@ alias drmid='docker rmi $(docker images -q -f dangling=true)'
 alias cm='chezmoi'
 alias vi='nvim'
 alias vim='nvim'
+alias ff='fastfetch'
 
 export EDITOR="nvim"
 export VISUAL= "nvim"
@@ -166,6 +167,6 @@ export VISUAL= "nvim"
 eval "$(starship init bash)"
 
 # run fastfetch
-if command -v fastfetch > /dev/null 2>&1; then
-  fastfetch
+if command -v fastfetch > /dev/null 2>&1 && [ $SHLVL == 1 ]; then
+  fastfetch;
 fi
