@@ -7,3 +7,5 @@
 	path = ~/.gitconfig-teamsportz
 [diff]
   external = difft
+[core]
+  autocrlf = false
