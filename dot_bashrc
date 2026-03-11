@@ -140,6 +140,7 @@ alias rg='rg -i'
 # GIT STUFF
 alias g='git status'
 alias gp='git push'
+alias lg='lazygit'
 # git root
 alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
 # docker useful alias
@@ -170,3 +171,6 @@ eval "$(starship init bash)"
 if command -v fastfetch > /dev/null 2>&1 && [ $SHLVL == 1 ]; then
   fastfetch;
 fi
+
+# mise
+eval "$(mise activate bash)"

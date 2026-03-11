@@ -1,6 +1,7 @@
 README.md
 .tmux.conf
 .config/kitty
+.config/nvim/lazy-lock.json
 
 # Stuff to ignore on windows
 {{- if eq .chezmoi.os "windows" }}
