@@ -174,4 +174,4 @@ eval "$(mise activate bash)"
 
 # starship prompt
 #eval "$(starship init bash)"
-eval "$(oh-my-posh init bash --config 'star')"
+eval "$(oh-my-posh init bash --config '~/.ohmyposh.json')"
