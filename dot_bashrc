@@ -173,4 +173,5 @@ fi
 eval "$(mise activate bash)"
 
 # starship prompt
-eval "$(starship init bash)"
+#eval "$(starship init bash)"
+eval "$(oh-my-posh init bash --config 'star')"

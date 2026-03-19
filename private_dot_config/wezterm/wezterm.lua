@@ -23,8 +23,8 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 		"-i",
 	}
 else
-	-- config.default_prog = { "bash", "--login", "-i" }
-	config.default_prog = { "bash", "-i" }
+	config.default_prog = { "bash", "--login", "-i" }
+	-- config.default_prog = { "bash", "-i"}
 end
 
 -- Keyboard
