@@ -15,11 +15,11 @@
           "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}}",
           "foreground": "cyan",
           "type": "os",
-          "style": "powerline"
+          "style": "plain"
         },
         {
           "type": "shell",
-          "style": "powerline",
+          "style": "plain",
           "foreground": "cyan",
           "options": {
             "mapped_shell_names": {
