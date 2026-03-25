@@ -17,11 +17,7 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	config.font_size = 12.0
 	config.initial_rows = 50
 	config.initial_cols = 104
-	config.default_prog = {
-		"C:\\Users\\jmgpena\\scoop\\apps\\git\\current\\bin\\bash",
-		"--login",
-		"-i",
-	}
+	config.default_prog = { "pwsh" }
 else
 	config.default_prog = { "bash", "--login", "-i" }
 	-- config.default_prog = { "bash", "-i"}
