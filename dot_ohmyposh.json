@@ -48,6 +48,17 @@
           "foreground": "#F1502F",
           "type": "git",
           "style": "plain"
+        },
+        {
+          "type": "jujutsu",
+          "style": "plain",
+          "foreground": "cyan",
+          "options": {
+            "fetch_status": true,
+            "ignore_working_copy": false,
+            "fetch_ahead_counter": true,
+            "ahead_icon": "⇡"
+          }
         }
       ]
     },
